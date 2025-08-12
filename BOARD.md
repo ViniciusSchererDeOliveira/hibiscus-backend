@@ -38,7 +38,7 @@
 
 ### 🔍 Refinamento
 
-- US-002 – Implementar autenticação 2FA
+- _(vazio no momento)_
 
 
 ### 📥 Backlog
@@ -59,6 +59,7 @@
 ### ✅ Done
 
 - US-001 – Implementar login com usuário e senha
+- US-002 – Implementar autenticação 2FA
 
 
 ---

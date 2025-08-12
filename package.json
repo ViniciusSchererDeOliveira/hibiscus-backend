@@ -26,7 +26,11 @@
     "@nestjs/jwt": "^11.0.0",
     "@nestjs/passport": "^11.0.5",
     "@nestjs/platform-express": "^11.0.1",
+    "@types/passport": "^1.0.17",
+    "class-validator": "^0.14.2",
     "openai": "^5.12.2",
+    "otplib": "^12.0.1",
+    "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "reflect-metadata": "^0.2.2",
     "rxjs": "^7.8.1"

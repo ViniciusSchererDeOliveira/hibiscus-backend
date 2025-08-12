@@ -1,47 +1,36 @@
 import {
   Body,
   Controller,
-  InternalServerErrorException,
   Post,
-  UnauthorizedException,
   UseGuards,
   Req,
+  UnauthorizedException,
 } from "@nestjs/common";
 import { AuthService } from "@/auth/auth.service";
 import type { LoginRequest, Tokens, RequestWithUser } from "@/auth/auth.types";
 import { AuthGuard } from "@nestjs/passport";
-import { USER_SUBJECT } from "@/auth/auth.constants";
 
 @Controller("auth")
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
   /**
-   * Handles user login.
-   * @param {LoginRequest} credentials - The user's credentials.
+   * Handles user login with two-factor authentication.
+   * The controller delegates the complex logic to the service,
+   * only handling the request and response.
+   * @param {LoginRequest} credentials - The user's credentials, potentially with a 2FA token.
    * @returns {Promise<Tokens>} The access and refresh tokens.
    */
   @Post()
   async postLogin(@Body() credentials: LoginRequest): Promise<Tokens> {
-    const isValid = this.authService.isValidCredentials(credentials);
-    if (!isValid) {
-      throw new UnauthorizedException();
-    }
-
-    try {
-      return await this.authService.getTokens({
-        sub: USER_SUBJECT,
-        username: credentials.username,
-      });
-    } catch {
-      throw new InternalServerErrorException("Error creating tokens");
-    }
+    return this.authService.login(credentials);
   }
 
   /**
    * Refreshes the user's tokens.
-   * @param {RequestWithUser} req - The request object with the user.
-   * @returns {Promise<Tokens>} The new access and refresh tokens.
+   * @param {RequestWithUser} req - The request object with the user, including the refresh token.
+   * @returns {Promise<Tokens>} A new set of access and refresh tokens.
+   * @throws {UnauthorizedException} If the user is not found in the request.
    */
   @UseGuards(AuthGuard("jwt-refresh"))
   @Post("refresh")
