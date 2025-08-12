@@ -1,0 +1,13 @@
+### Login
+POST http://localhost:3000/auth
+Content-Type: application/json
+
+{
+  "username": "TESTE",
+  "password": "SENHA"
+}
+
+### Refresh Token
+POST http://localhost:3000/auth/refresh
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwidXNlcm5hbWUiOiJURVNURSIsImlhdCI6MTc1NTAzMjcwMSwiZXhwIjoxNzU1MTE5MTAxfQ.rEdhxFFKZOmbLFqpQ6bGJGo3DydHVC75uoQ2A4wTtG8
