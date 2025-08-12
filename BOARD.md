@@ -33,14 +33,12 @@
 
 ### 🆕 New
 
-- US-002 – Implementar autenticação 2FA
-
 - US-003 – Implementar quick chat
 
 
 ### 🔍 Refinamento
 
-- _(vazio no momento)_
+- US-002 – Implementar autenticação 2FA
 
 
 ### 📥 Backlog
@@ -50,7 +48,7 @@
 
 ### 🛠 Doing
 
-- US-001 – Implementar login com usuário e senha
+- _(vazio no momento)_
 
 
 ### 📤 Pull Request / Peer Review
@@ -60,7 +58,7 @@
 
 ### ✅ Done
 
-- _(vazio no momento)_
+- US-001 – Implementar login com usuário e senha
 
 
 ---
